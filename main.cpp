@@ -2,22 +2,20 @@
 #include "Repository.h"
 #include "Tests.h"
 #include <iostream>
-#include <vector>
 #include <Windows.h>
+#include "UI.h"
 
 using namespace std;
 
 int main()
 {
-	tests();
-	tests_Repo();
-	Repository repo;
+	testMasina();
+	testRepo();
+	testServ();
+	cout << endl;
 	
-	Masina m1 = Masina("Vlad", "SV31FWF", "inchiriat");
-	Masina m2 = Masina(m1);
-
-	cout << m1.toString() << endl;
-	cout << m2.toString() << endl;
+	UI u;
+	u.menu();
 
 	system("pause");
 	return 0;

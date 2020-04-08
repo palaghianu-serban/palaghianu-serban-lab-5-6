@@ -11,7 +11,7 @@ private:
 	char* status;
 public:
 	Masina();
-	Masina(const char* p, const char* nr, const char* status);
+	Masina(const char* p, const char* nr, const char* s);
 	Masina(const Masina &m);
 	~Masina();
 
@@ -28,4 +28,5 @@ public:
 	friend ostream& operator<<(ostream& os, const Masina& m);
 
 	char* toString();
+	bool compare(Masina& m);
 };

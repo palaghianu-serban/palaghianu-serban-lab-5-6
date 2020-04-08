@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 Masina::Masina()
-{
+{	
+	//constructor default(sets all values NULL)
 	this->posesor = NULL;
 	this->nr = NULL;
 	this->status = NULL;
@@ -11,6 +12,7 @@ Masina::Masina()
 
 Masina::Masina(const char* p, const char* n, const char* s)
 {
+	//constructor cu 3 parametrii
 	this->posesor = new char[strlen(p) + 1];
 	strcpy_s(this->posesor, strlen(p) + 1, p);
 	this->nr = new char[strlen(n) + 1];
@@ -22,7 +24,7 @@ Masina::Masina(const char* p, const char* n, const char* s)
 Masina::Masina(const Masina &m)
 {
 	//constructor cu 1 singur parametru
-	//in: p de tip Project
+	//in: m de tip Masina
 	this->posesor = new char[strlen(m.posesor) + 1];
 	strcpy_s(this->posesor, strlen(m.posesor) + 1, m.posesor);
 	this->nr = new char[strlen(m.nr) + 1];
@@ -31,7 +33,9 @@ Masina::Masina(const Masina &m)
 	strcpy_s(this->status, strlen(m.status) + 1, m.status);
 }
 
-Masina::~Masina() {
+Masina::~Masina()
+{
+	//destructor
 	if (this->posesor) {
 		delete[] this->posesor;
 		this->posesor = NULL;
@@ -48,14 +52,14 @@ Masina::~Masina() {
 
 char* Masina::getPosesor()
 {
-	//out: returns GitPath
+	//out: returns posesor
 	return this->posesor;
 }
 
 void Masina::setPosesor(const char* p)
 {
-	//setter GitPath
-	//in: gitPathN (new value)
+	//setter posesor
+	//in: p (new value)
 	//out: -
 	if (this->posesor) {
 		delete[] this->posesor;
@@ -66,14 +70,14 @@ void Masina::setPosesor(const char* p)
 
 char* Masina::getNr()
 {
-	//out: returns GitPath
+	//out: returns nr
 	return this->nr;
 }
 
 void Masina::setNr(const char* n)
 {
-	//setter GitPath
-	//in: gitPathN (new value)
+	//setter nr
+	//in: n (new value)
 	//out: -
 	if (this->nr) {
 		delete[] this->nr;
@@ -84,14 +88,14 @@ void Masina::setNr(const char* n)
 
 char* Masina::getStatus()
 {
-	//out: returns GitPath
+	//out: returns status
 	return this->status;
 }
 
 void Masina::setStatus(const char* s)
 {
-	//setter GitPath
-	//in: gitPathN (new value)
+	//setter status
+	//in: s (new value)
 	//out: -
 	if (this->status) {
 		delete[] this->status;
@@ -112,7 +116,10 @@ Masina & Masina::operator=(const Masina &m)
 	return *this;
 }
 
-bool Masina::operator==(const Masina& m) {
+bool Masina::operator==(const Masina& m)
+{
+	//functie de comparare
+	//in: m de tip Masina
 	return (strcmp(this->posesor, m.posesor) == 0) && (strcmp(this->nr, m.nr)) && (strcmp(this->status, m.status) == 0);
 }
 
@@ -124,24 +131,24 @@ ostream& operator<<(ostream& os, const Masina& m)
 
 char* Masina::toString()
 {
-	//afisarea unei variabile de tip project
+	//afisarea unei variabile de tip masina
 	if (this->posesor != NULL) {
 		int noChars = strlen(this->posesor) + strlen(this->nr) + strlen(this->status) + 3 + 3 + 1;
 		char* s = new char[noChars];
-		char* aux = new char[5];
 		strcpy_s(s, noChars, this->posesor);
 		strcat_s(s, noChars, " | ");
-		strcpy_s(s, noChars, this->nr);
-		strcat_s(s, noChars, aux);
+		strcat_s(s, noChars, this->nr);
 		strcat_s(s, noChars, " | ");
-		strcpy_s(s, noChars, this->status);
-		strcat_s(s, noChars, aux);
-		if (aux) {
-			delete[] aux;
-			aux = NULL;
-		}
+		strcat_s(s, noChars, this->status);
 		return s;
 	}
 	else
 		return NULL;
+}
+
+bool Masina::compare(Masina & m)
+{
+	//functie de comparare
+	//in: m de tip Masina
+	return (strcmp(this->posesor, m.posesor) == 0) && (strcmp(this->nr, m.nr)) && (strcmp(this->status, m.status) == 0);
 }

@@ -1,3 +1,4 @@
 #pragma once
-void tests();
-void tests_Repo();
+void testMasina();
+void testRepo();
+void testServ();
