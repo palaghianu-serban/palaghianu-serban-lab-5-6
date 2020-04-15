@@ -27,9 +27,7 @@ void Repository::delMasinaR(Masina m)
 	//functie de delete folosind operatiile specifice unei liste
 	//in: m de tip Masina
 	//out: -
-	cout << "debugging1" << endl;
 	masini.remove(m);
-	cout << "debugging2" << endl;
 }
 
 void Repository::delMasinaIndexR(int index)
@@ -79,6 +77,33 @@ bool Repository::findElemR(Masina m)
 			return true;
 	return false;
 }
+
+bool Repository::findNrR(char* n)
+{
+	for (auto elem : this->masini)
+	{
+		if (strcmp(elem.getNr(), n) == 0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+char* Repository::getStatusR(int index)
+{
+	this->i = masini.begin();
+	advance(this->i, index);
+	return this->i->getStatus();
+}
+
+void Repository::updateStatusR(const char* newStatus, int index)
+{
+	this->i = masini.begin();
+	advance(this->i, index);
+	this->i->setStatus(newStatus);
+}
+
 
 list<Masina> Repository::getAllR()
 {

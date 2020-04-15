@@ -120,7 +120,7 @@ bool Masina::operator==(const Masina& m)
 {
 	//functie de comparare
 	//in: m de tip Masina
-	return (strcmp(this->posesor, m.posesor) == 0) && (strcmp(this->nr, m.nr)) && (strcmp(this->status, m.status) == 0);
+	return (strcmp(this->posesor, m.posesor) == 0) && (strcmp(this->nr, m.nr) == 0) && (strcmp(this->status, m.status) == 0);
 }
 
 ostream& operator<<(ostream& os, const Masina& m)
@@ -150,5 +150,5 @@ bool Masina::compare(Masina & m)
 {
 	//functie de comparare
 	//in: m de tip Masina
-	return (strcmp(this->posesor, m.posesor) == 0) && (strcmp(this->nr, m.nr)) && (strcmp(this->status, m.status) == 0);
+	return (strcmp(this->posesor, m.posesor) == 0) && (strcmp(this->nr, m.nr) == 0) && (strcmp(this->status, m.status) == 0);
 }

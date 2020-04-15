@@ -12,6 +12,8 @@ int main()
 	testMasina();
 	testRepo();
 	testServ();
+	testRepoFile();
+
 	cout << endl;
 	
 	UI u;

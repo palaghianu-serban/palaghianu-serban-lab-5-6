@@ -8,10 +8,12 @@ using namespace std;
 
 void testMasina()
 {
+	//teste clasa Masina
 	Masina m1 = Masina("Pala", "SV98BDJ", "liber");
 	assert(strcmp(m1.getPosesor(), "Pala") == 0);
 	m1.setNr("SV98SER");
 	Masina m2 = Masina(m1);
+	assert(m1.compare(m2) == true);
 	assert(strcmp(m1.getNr(), m2.getNr()) == 0);
 	m2.setStatus("inchiriat");
 	assert(strcmp(m2.getStatus(), "inchiriat") == 0);
@@ -21,12 +23,12 @@ void testMasina()
 	assert(m.getStatus() == NULL);
 	m.setPosesor("VLADIMIR");
 	assert(m.getPosesor() != NULL);
-	assert(m2.compare(m1) == false);
 	cout << "Testele Masina OK!" << endl;
 }
 
 void testRepo()
 {
+	//teste clasa Repository
 	Repository repo;
 	assert(repo.getLenR() == 0);
 	assert(repo.getAllR().empty() == true);
@@ -48,7 +50,7 @@ void testRepo()
 	//assert(repo.getLenR() == 3);
 
 	repo.updateMasinaR(2, m3);
-	assert(repo.findElemR(m1) == false);
+	assert(repo.findElemR(m1) == true);
 	assert(repo.getAllR().empty() == false);
 
 	cout << "Testele Repository OK!" << endl;
@@ -56,6 +58,7 @@ void testRepo()
 
 void testServ()
 {
+	//teste clasa Service
 	Service serv;
 	assert(serv.getRepoC().getAllR().empty() == true);
 
@@ -81,4 +84,21 @@ void testServ()
 	assert(serv.getRepoC().getAllR().empty() == false);
 
 	cout << "Testele Service OK!" << endl;
+}
+
+void testRepoFile()
+{
+	RepoFile repoFile;
+	list<Masina>::iterator i = repoFile.getAllR().begin();
+	Masina m = Masina("Andreea", "B312NGW", "ocupat");
+	const char* file = new char[50];
+	file = "intrare.txt";
+	repoFile.citireFileR(file);
+	assert(repoFile.getLenR() == 4);
+	repoFile.delMasinaIndexR(1);
+	assert(repoFile.getLenR() == 3);
+	assert(repoFile.findElemR(m) == true);
+	assert(repoFile.findNrR(m.getNr()) == true);
+
+	cout << "Testele pentru clasa RepoFile functioneaza" << endl;
 }

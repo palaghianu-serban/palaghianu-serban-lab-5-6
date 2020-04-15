@@ -16,5 +16,8 @@ public:
 	void updateMasinaR(int index, Masina m);
 	int getLenR();
 	bool findElemR(Masina m);
+	bool findNrR(char* n);
+	char* getStatusR(int index);
+	void updateStatusR(const char* newStatus, int index);
 	list<Masina> getAllR();
 };
